@@ -1,4 +1,7 @@
+import { connectDb } from "@/helper/db";
 import { NextResponse } from "next/server"
+
+connectDb();
 
 // get request function
 export function GET(request) {
