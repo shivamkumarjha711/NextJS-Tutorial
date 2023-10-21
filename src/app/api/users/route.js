@@ -1,35 +1,61 @@
 import { connectDb } from "@/helper/db";
+import { User } from "@/models/user";
 import { NextResponse } from "next/server"
 
 connectDb();
 
 // get request function
-export function GET(request) {
-
-    const users = [
-        {
-            name: "Shivam",
-            phone: "54214",
-            course: "wd"
-        },
-        {
-            name: "karan",
-            phone: "54214",
-            course: "wd"
-        },
-        {
-            name: "hitesh",
-            phone: "54214",
-            course: "wd"
-        },
-    ]
+export async function GET(request) {
+    let users = []
+    try {
+        users = await User.find().select("-password")
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({
+            message: "failed to get users",
+            success: false
+        })
+    }
 
     return NextResponse.json(users)
 }
 
-// post request function
+// post request function 
+// craete user
 export async function POST(request) {
-    const body = request.body;
+    // fetch user details from request
+    const {name, email, password, about, profileURL} = await request.json();
+    // console.log({name, email, password, about, profileURL});
+
+    // create user object with user model
+    const user = new User({
+        name,
+        email,
+        password,
+        about,
+        profileURL
+    })
+
+    try {
+        // save the object to database
+        const createdUser = await user.save();
+
+        const response = NextResponse.json(user, {
+            status: 201,
+        })
+    
+        return response
+
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({
+            message: "Failed to create user !!",
+            status: false
+        })
+    }
+
+
+    // const body = request.body;
     // console.log(body);
     // console.log(request.method);
     // console.log(request.cookies);
@@ -39,24 +65,10 @@ export async function POST(request) {
     // const jsonData = await request.json();
     // console.log(jsonData);
 
-    const textData = await request.text();
-    console.log(textData);
+    // const textData = await request.text();
+    // console.log(textData);
 
-    return NextResponse.json({
-        message: "posting user data"
-    })
+    // return NextResponse.json({
+    //     message: "posting user data"
+    // })
 }
-
-// delete request function
-export function DELETE() {
-    console.log("Delete API Called");
-    return NextResponse.json(
-        {
-        message: "Deleted !!",
-        status: true
-        }, 
-        { status: 201, statusText:"chamged satetus text" }
-    );
-}
-
-export function PUT() {}
