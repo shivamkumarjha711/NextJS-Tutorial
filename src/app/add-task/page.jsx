@@ -1,15 +1,15 @@
 import React from 'react'
+import AddTask from './AddTask';
+import CustomNavbar from '@/components/CustomNavbar';
 
 export const metadata = {
-    title: "Add Task : Work Manager",
-}
+    title: "Add Task : Task Manager",
+};
 
-const AddTask = () => {
+const AddTaskPage = () => {
   return (
-    <div>
-        <h1 className='text-3xl'>Add Task Component</h1>
-    </div>
+    <AddTask />
   )
 }
 
-export default AddTask
+export default AddTaskPage

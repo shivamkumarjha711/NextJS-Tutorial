@@ -1,6 +1,6 @@
 
 export const metadata = {
-  title: "Home : Work Manager",
+  title: "Home : Task Manager",
   description: "Home page"
 }
 

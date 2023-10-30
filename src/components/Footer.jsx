@@ -4,7 +4,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='h-40 bg-blue-600 text-white mt-5'>
+    <footer className='h-30 bg-blue-600 text-white mt-5'>
         <div className='flex p-5 justify-around'>
             <div className='text-center flex justify-center flex-col'>
                 <h1 className='text-3xl'>Welcome to Work Manager</h1>
