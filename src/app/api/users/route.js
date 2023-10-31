@@ -26,7 +26,7 @@ export async function GET(request) {
 export async function POST(request) {
     // fetch user details from request
     const {name, email, password, about, profileURL} = await request.json();
-    // console.log({name, email, password, about, profileURL});
+    // console.log("signup data", {name, email, password, about, profileURL});
 
     // create user object with user model
     const user = new User({
@@ -40,12 +40,12 @@ export async function POST(request) {
     try {
         // save the object to database
         user.password = bcrypt.hashSync(user.password, parseInt(process.env.BCRYPT_SALT));
-        console.log(user);
 
-        const createdUser = await user.save();
+        await user.save();
 
         const response = NextResponse.json(user, {
             status: 201,
+            message: "User created successfully"
         })
     
         return response

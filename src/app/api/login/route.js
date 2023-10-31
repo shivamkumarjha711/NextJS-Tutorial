@@ -4,6 +4,9 @@ import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { connectDb } from "@/helper/db";
+
+connectDb();
 
 export async function POST(request) {
     console.log("login api");
@@ -35,7 +38,8 @@ export async function POST(request) {
         // 4. create next response -- cookie
         const response = NextResponse.json({
             message: "Login Success !!",
-            success: true
+            success: true,
+            user: user,
         });
 
         response.cookies.set("authToken", token, {

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import loginSvg from "../assets/undraw_mobile_content_xvgr.png";
+import loginSvg from "../../assets/undraw_mobile_content_xvgr.png";
 import Image from 'next/image';
-import { addTask } from '../services/taskService';
+import { addTask } from '../../services/taskService';
 import { toast } from 'react-toastify';
 
 // export const metadata = {
@@ -125,8 +125,8 @@ const AddTask = () => {
                 <option value="none" disabled>
                   ---Select Status---
                 </option>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
               </select>
             </div>
             {/* task button */}

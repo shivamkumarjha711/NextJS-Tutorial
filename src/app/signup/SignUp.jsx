@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from 'react'
-import signupBanner from "../assets/signup.svg"
+import signupBanner from "../../assets/signup.svg"
 import Image from 'next/image'
 import { toast } from 'react-toastify'
-import { signUp } from '../services/userService'
+import { signUp } from '../../services/userService'
 
 const SignUp = () => {
 

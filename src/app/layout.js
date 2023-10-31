@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CustomNavbar from '@/components/CustomNavbar'
 import Footer from '@/components/Footer'
 import { ToastContainer } from 'react-toastify';
+import UserProvider from '@/context/userProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,13 +17,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToastContainer />
-        <CustomNavbar />
+      
+        <UserProvider>
+          <ToastContainer />
 
-        <div className=''>{children}</div>
+          <CustomNavbar />
+          <div className=''>{children}</div>
+          <Footer />
 
-        <Footer />
-
+        </UserProvider>
       </body>
     </html>
   )
