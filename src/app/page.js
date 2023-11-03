@@ -1,3 +1,7 @@
+import ContactForm from "@/components/homepage/ContactFormSection"
+import FeatureSection from "@/components/homepage/FeatureSection"
+import HomePageBanner from "@/components/homepage/HomeBanner"
+import TestimonialSection from "@/components/homepage/Testimonial"
 
 export const metadata = {
   title: "Home : Task Manager",
@@ -7,7 +11,10 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
-      <h1 className='text-5xl'>Welcome to Work Manager</h1>
+      <HomePageBanner />
+      <FeatureSection />
+      <TestimonialSection />
+      <ContactForm />
     </div>
   )
 }

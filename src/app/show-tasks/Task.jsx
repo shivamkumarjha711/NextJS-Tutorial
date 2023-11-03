@@ -2,8 +2,13 @@ import UserContext from '@/context/userContext'
 import React, { useContext } from 'react'
 import { RxCrossCircled } from "react-icons/rx"
 
-const Task = ({task}) => {
+const Task = ({task, deleteTaskParent}) => {
     const {user} = useContext(UserContext);
+
+    function deleteTask(taskId) {
+        // ....
+        deleteTaskParent(taskId)
+    }
 
   return (
     <div className={`shadow-lg text-white mt-2 rounded-md ${
